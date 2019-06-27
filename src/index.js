@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 /* safari helper */
 const setAsyncTimeout = (cb, timeout = 0) => new Promise(resolve => {
   setTimeout(() => {
