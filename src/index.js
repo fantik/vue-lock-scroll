@@ -5,6 +5,7 @@ const setAsyncTimeout = (cb, timeout = 0) => new Promise(resolve => {
     resolve()
   }, timeout)
 })
+let gapedDOMElements
 export default class ScrollLock {
   static install (Vue, options) {
     /* define defaults options */
@@ -22,10 +23,11 @@ export default class ScrollLock {
   }
 
   constructor (gapedElements) {
-    this.gapedElements = gapedElements ? gapedElements.split(', ').map(el => document.querySelector(el)) : []
+    gapedDOMElements = gapedElements ? gapedElements.split(', ').map(el => document.querySelector(el)) : []
     /* define entry values */
     this.locks = []
     this.documentListenerAdded = false
+    this.previousBodyPaddingRight = undefined
     this.initialClientY = -1
     this.init()
   }
@@ -89,14 +91,13 @@ export default class ScrollLock {
     // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
     // the responsiveness for some reason. Setting within a setTimeout fixes this.
     await setAsyncTimeout(() => {
-      console.log(123)
       if (this.previousBodyPaddingRight === undefined) {
         const reserveScrollBarGap = !!options && options.reserveScrollBarGap === true
         const scrollBarGap = window.innerWidth - document.documentElement.clientWidth
         if (reserveScrollBarGap && scrollBarGap > 0) {
           this.previousBodyPaddingRight = document.body.style.paddingRight
           document.body.style.paddingRight = `${scrollBarGap}px`
-          this.gapedElements.forEach(el => {
+          gapedDOMElements.forEach(el => {
             el.style.paddingRight = scrollBarGap + 'px'
           })
         }
@@ -115,7 +116,7 @@ export default class ScrollLock {
     await setAsyncTimeout(() => {
       if (this.previousBodyPaddingRight !== undefined) {
         document.body.style.paddingRight = this.previousBodyPaddingRight
-        this.gapedElements.forEach(el => {
+        gapedDOMElements.forEach(el => {
           el.style.paddingRight = this.previousBodyPaddingRight
         })
         // Restore previousBodyPaddingRight to undefined so setOverflowHidden knows it
@@ -191,7 +192,7 @@ export default class ScrollLock {
         }
       }
     } else {
-      await this.setOverflowHidden(options)
+      this.setOverflowHidden(options)
       const lock = {
         targetElement,
         options: options || {}
