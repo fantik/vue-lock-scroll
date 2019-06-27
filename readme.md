@@ -6,7 +6,7 @@
 
 ## Install
 
-```bash
+```
 npm i -S vue-scroll-lock
 ```
 
@@ -23,10 +23,10 @@ Vue.use(ScrollLock, options)
 | propName      | String | $scrollLock |
 | gapedElements      | String      |   '' |
 
-`propName` - recommended to use with $ prefix to prevent duplicate naming in component
+`propName` - recommended to use with $ prefix to prevent duplicate naming in component.
 
 `gapedElements` - when scroll locks scrollbar 
-disappears so fixed element position change relative to scrollBar width. To prevent it you can pass gapedElements property with css selectors: `'.header, .fixed-div, .absolute-div'`
+disappears so fixed element position change relative to scrollBar width. To prevent it you can pass gapedElements property with css selectors: `'.header, .fixed-div, .absolute-div'`.
 
 ### Example
 ```
@@ -46,9 +46,10 @@ this.$locker.lock(targetElement, {
     reserveScrollBarGap: true
 })
 ```
-`targetElement` - DOM element that can be scrolled
 
-`reserveScrollBarGap` - add padding to elements in gapedElements string to prevent content jumping on lock/unlock scroll
+`targetElement` - DOM element that can be scrolled.
+
+`reserveScrollBarGap` - add padding to elements in gapedElements string to prevent content jumping on lock/unlock scroll.
 
 ** *targetElement required in IOS devices*
 
