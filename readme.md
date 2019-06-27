@@ -3,8 +3,6 @@
 > Vue/Nuxt body-scroll-lock implementation. Lock body scroll at all devices
 
 [![NPM Version][npm-image]][npm-url]
-[![Linux Build][travis-image]][travis-url]
-[![Test Coverage][coveralls-image]][coveralls-url]
 
 ## Install
 
@@ -14,15 +12,43 @@ npm i -S vue-scroll-lock
 
 ## Usage
 
-TODO
+```
+import ScrollLock from 'vue-lock-scroll'
 
+Vue.use(ScrollLock, {
+  propName: '$locker',
+  gapedElements: '.header'
+})
+```
+Lock scroll:
+```
+this.$locker.lock(targetElement, options)
+```
+targetElement - DOM element that can be scrolled
+
+** targetElement required in IOS devices
+
+Unlock scroll with element:
+```
+this.$locker.unlock(targetElement)
+```
+Unlock all scroll locks:
+```
+this.$locker.unlockAll()
+```
+### Options
+| Property        | Type           | Default  |
+| ------------- |:-------------:| -----:|
+| propName      | String | $scrollLock |
+| gapedElements      | String      |   '' |
+
+propName - recommended to use with $ prefix to prevent duplicate naming in component
+
+gapedElements - when scroll locks scrollbar 
+disappears so fixed element position change relative to scrollBar width. To prevent it you can pass gapedElements property with css selectors: '.header, .fixed-div, .absolute-div'
 ## License
 
 [MIT](http://vjpr.mit-license.org)
 
-[npm-image]: https://img.shields.io/npm/v/live-xxx.svg
-[npm-url]: https://npmjs.org/package/live-xxx
-[travis-image]: https://img.shields.io/travis/live-js/live-xxx/master.svg
-[travis-url]: https://travis-ci.org/live-js/live-xxx
-[coveralls-image]: https://img.shields.io/coveralls/live-js/live-xxx/master.svg
-[coveralls-url]: https://coveralls.io/r/live-js/live-xxx?branch=master
+[npm-image]: https://img.shields.io/npm/v/vue-lock-scroll.svg
+[npm-url]: https://www.npmjs.com/package/vue-lock-scroll
