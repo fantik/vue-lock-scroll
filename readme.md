@@ -22,7 +22,6 @@ Vue.use(ScrollLock, options)
 | ------------- |:-------------:| -----:|
 | propName      | String | $scrollLock |
 | gapedElements      | String      |   '' |
-
 `propName` - recommended to use with $ prefix to prevent duplicate naming in component.
 
 `gapedElements` - when scroll locks scrollbar 
@@ -35,7 +34,7 @@ Vue.use(ScrollLock, {
   gapedElements: '.header'
 })
 ```
-Lock scroll:
+#### Lock scroll:
 ```
 this.$locker.lock(targetElement, options)
 ```
@@ -53,11 +52,11 @@ this.$locker.lock(targetElement, {
 
 ** *targetElement required in IOS devices*
 
-Unlock scroll with element:
+#### Unlock scroll with element:
 ```
 this.$locker.unlock(targetElement)
 ```
-Unlock all scroll locks:
+#### Unlock all scroll locks:
 ```
 this.$locker.unlockAll()
 ```
