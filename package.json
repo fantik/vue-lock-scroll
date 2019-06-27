@@ -1,6 +1,6 @@
 {
   "name": "vue-lock-scroll",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "Vue/Nuxt body-scroll-lock implementation",
   "keywords": [
     "scroll-lock",

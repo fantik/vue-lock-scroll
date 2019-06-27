@@ -62,6 +62,25 @@ this.$locker.unlock(targetElement)
 ```
 this.$locker.unlockAll()
 ```
+
+### Usage outside .vue files
+
+In .js file:
+```
+/* import class */
+import ScrollLock from 'vue-lock-scroll'
+
+/* create new ScrollLock instance */
+const locker = new ScrollLock(gapedElements)
+
+/* example */
+const locker = new ScrollLock('.header, .fixed-element')
+
+/* lock scroll */
+locker.lock(target, {
+  reserveScrollBarGap: true
+})
+```
 ## License
 
 [MIT](http://vjpr.mit-license.org)
