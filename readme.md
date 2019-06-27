@@ -15,26 +15,7 @@ npm i -S vue-scroll-lock
 ```
 import ScrollLock from 'vue-lock-scroll'
 
-Vue.use(ScrollLock, {
-  propName: '$locker',
-  gapedElements: '.header'
-})
-```
-Lock scroll:
-```
-this.$locker.lock(targetElement, options)
-```
-targetElement - DOM element that can be scrolled
-
-** targetElement required in IOS devices
-
-Unlock scroll with element:
-```
-this.$locker.unlock(targetElement)
-```
-Unlock all scroll locks:
-```
-this.$locker.unlockAll()
+Vue.use(ScrollLock, options)
 ```
 ### Options
 | Property        | Type           | Default  |
@@ -46,6 +27,38 @@ propName - recommended to use with $ prefix to prevent duplicate naming in compo
 
 gapedElements - when scroll locks scrollbar 
 disappears so fixed element position change relative to scrollBar width. To prevent it you can pass gapedElements property with css selectors: '.header, .fixed-div, .absolute-div'
+
+### Example
+```
+Vue.use(ScrollLock, {
+  propName: '$locker',
+  gapedElements: '.header'
+})
+```
+Lock scroll:
+```
+this.$locker.lock(targetElement, options)
+```
+
+#### Options
+```
+this.$locker.lock(targetElement, {
+    reserveScrollBarGap: true
+})
+```
+targetElement - DOM element that can be scrolled
+reserveScrollBarGap - add padding to elements in gapedElements string to prevent content jumping on lock/unlock scroll
+
+** targetElement required in IOS devices
+
+Unlock scroll with element:
+```
+this.$locker.unlock(targetElement)
+```
+Unlock all scroll locks:
+```
+this.$locker.unlockAll()
+```
 ## License
 
 [MIT](http://vjpr.mit-license.org)
