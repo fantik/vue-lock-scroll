@@ -1,6 +1,6 @@
 {
   "name": "vue-lock-scroll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue/Nuxt body-scroll-lock implementation",
   "keywords": ["scroll-lock", "lock", "body-scroll-lock", "ios lock scroll", "vue lock scroll", "nuxt scroll lock"],
   "main": "lib/index.js",
@@ -9,6 +9,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "stas glebov",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StasGlebov/vue-lock-scroll"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
