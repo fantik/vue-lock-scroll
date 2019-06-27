@@ -22,6 +22,8 @@ Vue.use(ScrollLock, options)
 | ------------- |:-------------:| -----:|
 | propName      | String | $scrollLock |
 | gapedElements      | String      |   '' |
+
+
 `propName` - recommended to use with $ prefix to prevent duplicate naming in component.
 
 `gapedElements` - when scroll locks scrollbar 
